@@ -197,7 +197,7 @@ def isocalc(isoraw):
             use='cat', output=isos_extract_rast, overwrite=True)
     grass.run_command('r.grow.distance', input=isos_extract_rast,
             value=isos_grow_cat, distance=isos_grow_distance,
-            flags='m', overwrite=True)
+            flags='m', metric='geodesic', overwrite=True)
     grass.mapcalc(isos_grow_cat_int + ' = int(' + isos_grow_cat + ')')
     if max_distance:
         recode_str = '0:%f:1\n%f:*:0' % (max_distance, max_distance)
